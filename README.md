@@ -1,2 +1,6 @@
 # CEB102
 python ETL
+
+1.333
+2.AAA
+3.RTTTTR
