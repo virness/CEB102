@@ -8,8 +8,11 @@ userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 
 headers ={'User-Agent':userAgent}
 
 ss = requests.session()
+
 data = [] #把取得的資訊都放入list
+
 def songo(keyword):
+
     userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
     headers ={'User-Agent':userAgent}
     url = f'https://www.pcone.com.tw/search?q={keyword}&sortBy=price&sortDir=desc'
