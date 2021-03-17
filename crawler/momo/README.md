@@ -1,4 +1,4 @@
-#momo 購物網
+momo 購物網
 #第一部分先導入所需的套件
 
 from bs4 import BeautifulSoup 
