@@ -38,10 +38,10 @@ pchome(keyword)
 import pandas as pd
 from sqlalchemy import create_engine
 
-# 初始化資料庫連線，使用pymysql模組
+ 初始化資料庫連線，使用pymysql模組
 engine = create_engine('mysql+pymysql://root:(密碼)@localhost/(資料庫名稱)?charset=utf8')
-# 讀取本地CSV檔案
+ 讀取本地CSV檔案
 df = pd.read_csv("pchome.csv", sep=',')
-# 將新建的DataFrame儲存為MySQL中的資料表，不儲存index列
+ 將新建的DataFrame儲存為MySQL中的資料表，不儲存index列
 df.to_sql('pchome', engine, index= False)
 print("Write to MySQL successfully!")
