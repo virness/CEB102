@@ -9,6 +9,7 @@ import re
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36'}
 
 建立函數
+
 def momo(keyword):
     url=f'https://m.momoshop.com.tw/search.momo?searchKeyword={keyword}&couponSeq=&searchType=3&cateLevel=-1&curPage=1&cateCode=&cateName=&maxPage=228&minPage=1&_advCp=N&_advFirst=N&_advFreeze=N&_advSuperstore=N&_advTvShop=N&_advTomorrow=N&_advNAM=N&_advStock=N&_advPrefere=N&_advThreeHours=N&_advPriceS=&_advPriceE=&_brandNameList=&_brandNoList=&ent=b&_imgSH=fourCardType&specialGoodsType=&_isFuzzy=0&_spAttL=&_mAttL=&_sAttL=&_noAttL='
     resp = requests.get(url, headers=headers)
