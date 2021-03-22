@@ -1,6 +1,5 @@
 # CEB102
 python ETL
 
-1.333
-2.AAA
-3.RTTTTR
+# 顯示卡算力評比網
+https://www.nicehash.com/profitability-calculator/nvidia-rtx-3080
