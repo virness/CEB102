@@ -1,0 +1,25 @@
+import requests
+import json
+from bs4 import BeautifulSoup
+import pandas as pd
+import re
+from datetime import datetime
+import os
+
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36'}
+data=[]
+for i in range(1620000,1945831):
+
+    url = f'https://www.ettoday.net/news/20200107/{i}.htm'
+    resp = requests.get(url)
+    if resp.status_code == 200:
+            soup = BeautifulSoup(resp.text)
+            url = soup.find('link')['href']
+            title=soup.find('h1', attrs={'class':'title'}).text
+            time=soup.find('time',attrs={'class':'date'}).text
+            content='\n'.join(i.text for i in soup.find('div',attrs={'class':'story'}).find_all('p'))
+            data.append([title,time,content])
+            
+columns = ['TITLE', 'TIME','CONTENT']
+df = pd.DataFrame(data=data, columns=columns)
+df.to_csv('ettodaynews.csv',index=False,encoding='utf-8-sig')
