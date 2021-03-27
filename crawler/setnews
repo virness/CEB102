@@ -16,15 +16,18 @@ data=[]
 我們把資料 標題、時間、內容 擷取 先存csv 再存入my sql
 for i in range(670000,915411):
     url = f'https://www.setn.com/News.aspx?NewsID={i}&utm_source=setn.com&utm_medium=viewall&utm_campaign=viewallnews'
-    resp = requests.get(url)
-    if resp.status_code == 200:
-            soup = BeautifulSoup(resp.text)
-            url = soup.find('link')['href']
-            title=soup.find('h1', attrs={'class':'news-title-3'}).text
-            time=soup.find('time',attrs={'class':'page-date'}).text
-            content='\n'.join(i.text for i in soup.find('div',attrs={'id':'Content1'}).find_all('p'))
-            data.append([title,time,content])
-            time.sleep(1)
+    resp = requests.get(url,headers=headers)
+    try:
+        if resp.status_code == 200:
+                soup = BeautifulSoup(resp.text,'html.parser')
+                url = soup.find('link')['href']
+                title=soup.find('h1', attrs={'class':'news-title-3'}).text
+                time=soup.find('time',attrs={'class':'page-date'}).text
+                content='\n'.join(i.text for i in soup.find('div',attrs={'id':'Content1'}).find_all('p'))
+                data.append([title,time,content])
+                time.sleep(1)
+    except:
+        pass
 columns = ['TITLE', 'TIME','CONTENT']
 df = pd.DataFrame(data=data, columns=columns)
 df.to_csv('sentnews.csv',index=False,encoding='utf-8-sig')
