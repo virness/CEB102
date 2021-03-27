@@ -5,26 +5,25 @@ import pandas as pd
 import re
 from datetime import datetime
 import os
-
+import time
 
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36'}
 data=[]
-
-670000約 2020/01/01   915411 截至2021/03/27
-for i in range(670000,915411):
-    url = f'https://www.setn.com/News.aspx?NewsID={i}&utm_source=setn.com&utm_medium=viewall&utm_campaign=viewallnews'
+for i in range(1940000,1946480):
+    url = f'https://www.ettoday.net/news/20200107/{i}.htm'
     resp = requests.get(url,headers=headers)
     try:
         if resp.status_code == 200:
                 soup = BeautifulSoup(resp.text,'html.parser')
                 url = soup.find('link')['href']
-                title=soup.find('h1', attrs={'class':'news-title-3'}).text
-                time=soup.find('time',attrs={'class':'page-date'}).text
-                content='\n'.join(i.text for i in soup.find('div',attrs={'id':'Content1'}).find_all('p'))
-                data.append([title,time,content])
+                cate= soup.find('div',attrs={'class':'part_menu_5 clearfix'}).text
+                title=soup.find('h1', attrs={'class':'title'}).text
+                time=soup.find('time',attrs={'class':'date'}).text
+                content='\n'.join(i.text for i in soup.find('div',attrs={'class':'story'}).find_all('p'))
+                data.append([url,cate,title,time,content])
                 time.sleep(1)
     except:
-        pass
-columns = ['TITLE', 'TIME','CONTENT']
+        pass            
+columns = ['Url','Cate','TITLE', 'TIME','CONTENT']
 df = pd.DataFrame(data=data, columns=columns)
-df.to_csv('sentnews.csv',index=False,encoding='utf-8-sig')
+df.to_csv('ettodaynews.csv',index=False,encoding='utf-8-sig')
