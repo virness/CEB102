@@ -22,12 +22,12 @@ data.to_csv('stock_id.csv', index=False, header = True,encoding='utf-8-sig')
 
 ---------------------------------------------------------------------------------------------------------
 
-#這邊我們要用yahoo爬蟲套件請先安裝
+###這邊我們要用yahoo爬蟲套件請先安裝
 
-!pip install yfinance
+
 ---------------------------------------------------------------------------------------------------------
 ### import yfinance as yf
-##  import csv
+### import csv
 ### import pandas as pd
 ### import time
 
