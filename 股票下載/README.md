@@ -1,3 +1,13 @@
+#先下載股票套件 yf、google、fred
+
+!pip install yfinance 
+!pip install fredapi 
+!pip install pytrends 
+
+
+
+
+
 #請先下載台股代號  下載後在stock_id.csv可以看到台股代號 將其他欄位全部刪除即可
 
 import requests
