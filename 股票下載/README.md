@@ -26,10 +26,10 @@ data.to_csv('stock_id.csv', index=False, header = True,encoding='utf-8-sig')
 
 !pip install yfinance
 ---------------------------------------------------------------------------------------------------------
-import yfinance as yf
-import csv
-import pandas as pd
-import time
+### import yfinance as yf
+##  import csv
+### import pandas as pd
+### import time
 
 df=pd.read_csv('stock_id.csv', delimiter='\t')
 historical_data = pd.DataFrame()
