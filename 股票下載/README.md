@@ -1,8 +1,8 @@
 #先下載股票套件 yf、google、fred
 
-!pip install yfinance 
-!pip install fredapi 
-!pip install pytrends 
+# !pip install yfinance 
+# !pip install fredapi 
+# !pip install pytrends 
 
 
 
