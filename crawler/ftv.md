@@ -9,7 +9,7 @@ from random import randint
 from time import sleep
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36'}
 
-for k in range(1,400):
+for k in range(1,201):
     url  = f'https://www.ftvnews.com.tw/tag/%e6%94%bf%e6%b2%bb/{k}'
     res  = requests.get(url,headers=headers)
     soup = BeautifulSoup(res.text,'lxml')
