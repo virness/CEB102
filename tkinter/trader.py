@@ -70,12 +70,12 @@ def finance():
     rate=float(cerebro.broker.getvalue()/10000)-1
     rate=rate*100
     rate=round(rate,2)
-    rate=f'均線總報酬率為:{rate}%'
+    rate=f'均線   報酬率為:{rate}%'
     
     
     stk = yf.Ticker(f"{keyword}.TW")
     # 取得 2000 年至今的資料
-    data = stk.history(start = '2020-01-01',end='2020-12-31')
+    data = stk.history(start = '2016-01-01',end='2020-12-31')
     # 簡化資料，只取開、高、低、收以及成交量
     data = data[['Open', 'High', 'Low', 'Close', 'Volume']]
     ret = data['Close'].pct_change()
@@ -83,25 +83,15 @@ def finance():
     # 计算EMA12和EMA26
     ema12 = ta.EMA(data['Close'], 12)
     ema26 = ta.EMA(data['Close'], 26)
-
-    # sig1只考虑HIST指标，HIST转正时开仓买入，转负时清仓
-    sig1 = (hist>0)
-    # sig2同时考虑HIST指标和DEA指标，只有当HIST转正，且DEA在0以上时，才开仓买入，任何一个指标变负即清仓。
-    # 这是文献中建议的方法
     sig2 = (hist>0) & (dea>0)
-    # sig3同时考虑HIST和EMA指标，只有当HIST为正，而且当前价格在慢线（26日指数加权平均价）上方时，才开仓买入，任何一个指标转负即清仓。
-    # 网上有人建议过这种方法（如果我没有理解错的话）
-    sig3 = (hist>0) & (data['Close']>ema26)
-
     sig2_lag = sig2.shift(1).fillna(0).astype(int)
-    # sig2_lag与股票日收益率相乘，即可得策略日收益率。python能自动对齐时间序列的日期。
     sig2_ret = sig2_lag*ret
-    # 计算策略累计收益
     cum_sig2_ret = (1+sig2_ret).cumprod()
-    cum_sig2_ret=cum_sig2_ret[-1:]-1
-    cum_sig2_ret=cum_sig2_ret*100
+    cum_sig2_ret=cum_sig2_ret[-1:]
+    cum_sig2_ret=np.array(cum_sig2_ret)
+    cum_sig2_ret=cum_sig2_ret[0]*100
     cum_sig2_ret=round(cum_sig2_ret,2)
-    cum_sig2_ret=f'RSI {cum_sig2_ret}%'
+    cum_sig2_ret=f'MACD報酬率為:{cum_sig2_ret}%'
     
     
     stk = yf.Ticker(f'{keyword}.TW')
@@ -173,7 +163,7 @@ def finance():
     for ret in rets:
         total_ret *= 1 + ret
     cum_ret=(str(round((total_ret - 1)*100,2)) + '%')  
-    cum_ret=f'RSI報酬率為{cum_ret}'
+    cum_ret=f'RSI    報酬率為{cum_ret}'
     
     
     t.insert('insert',rate)
