@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>交易回測</title>
+</head>
+<body>
+<table width="1800" height="360">
+
+<tr><td align="center">
+<h1>交易回測平台</h1>
+<form method='post' action="/post">
+<p> 請輸入股票代號:：<input type='text' name='username'><button type='submit'>確定</button></p>
+</form>
+	{% for table in tables%}
+		{{table|safe }}	
+	{% endfor %}
+</body>
+</td></tr>
+</table>
+</html>
+
+
