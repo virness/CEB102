@@ -26,8 +26,16 @@ from pymongo import MongoClient
 from flask import render_template
 app = Flask(__name__)
 @app.route("/post", methods=['GET', 'POST'])
-def submit():  
-    conn = MongoClient(host=['localhost:27017']) 
+from flask import Flask
+from flask import request
+import pymongo
+import pandas as pd
+from pymongo import MongoClient
+from flask import render_template
+app = Flask(__name__)
+@app.route("/post", methods=['GET', 'POST'])
+def submit():
+    conn = MongoClient(host=['localhost:27017'])
     db = conn.testDB
     collection = db.testCollection
     cursor = collection.find({})
@@ -40,7 +48,8 @@ def submit():
     else:
         return render_template("post.html")
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0")
+
 
 
 # In[ ]:
