@@ -17,15 +17,6 @@ collection.insert_many(records)
 
 # In[ ]:
 
-
-from flask import Flask
-from flask import request
-import pymongo
-import pandas as pd
-from pymongo import MongoClient
-from flask import render_template
-app = Flask(__name__)
-@app.route("/post", methods=['GET', 'POST'])
 from flask import Flask
 from flask import request
 import pymongo
@@ -52,7 +43,7 @@ if __name__ == '__main__':
 
 
 
-# In[ ]:
+
 
 
 #<img src="{{ url_for('static', filename='2330.jpg') }}" width="800" height="600" />
