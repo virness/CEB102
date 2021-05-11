@@ -22,15 +22,15 @@ soup = BeautifulSoup(res.text,'lxml')
 links = soup.select('ul.row > li > a')
 try:
 for i in links:
-link=i.get('href')
-url=f'https://www.ftvnews.com.tw/{link}'
-resp = requests.get(url,headers=headers)
-if resp.status_code == 200:
-soup = BeautifulSoup(resp.text,'html.parser')
-title= soup.select('h1.text-center')[0].text
-content='\n'.join(i.text for i in soup.find('div',attrs={'id':'newscontent'}).find_all('p'))
-except:
-pass
+  link=i.get('href')
+  url=f'https://www.ftvnews.com.tw/{link}'
+  resp = requests.get(url,headers=headers)
+  if resp.status_code == 200:
+    soup = BeautifulSoup(resp.text,'html.parser')
+    title= soup.select('h1.text-center')[0].text
+    content='\n'.join(i.text for i in soup.find('div',attrs={'id':'newscontent'}).find_all('p'))
+    except:
+        pass
 columns = ['TITLE','CONTENT']
 df = pd.DataFrame(data=data, columns=columns)
 df.to_csv('ftv.csv',index=False,encoding='utf-8')
