@@ -4,8 +4,11 @@
 # In[ ]:
 
 
-import requests import json import pandas as pd import pymysql def pchome(keyword):
-
+import requests 
+import json 
+import pandas as pd 
+import pymysql 
+def pchome(keyword):
     url=f'https://ecshweb.pchome.com.tw/search/v3.3/all/results?q={keyword}&page=2&scope=all'
     data=requests.get(url).text
     jsondata=json.loads(data)
