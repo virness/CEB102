@@ -31,8 +31,7 @@ def pchome(keyword):
 keyword = input("請輸入關鍵字:") keyword = keyword.replace(" ","&") pchome(keyword)
 
 import pandas as pd 
-from sqlalchemy 
-import create_engine
+from sqlalchemy import create_engine
 
 #初始化資料庫連線，使用pymysql模組
 
