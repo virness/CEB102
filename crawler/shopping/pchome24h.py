@@ -43,5 +43,6 @@ df = pd.read_csv("pchome.csv", sep=',')
 
 #將新建的DataFrame儲存為MySQL中的資料表，不儲存index列
 
-df.to_sql('pchome', engine, index= False) print("Write to MySQL successfully!")
+df.to_sql('pchome', engine, index= False) 
+print("Write to MySQL successfully!")
 
