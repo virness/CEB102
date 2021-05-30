@@ -18,16 +18,16 @@ try:
         res=requests.get(url)
         soup = BeautifulSoup(res.text, 'lxml')
         for item in soup.select('h5.for_proname a'):
-        url = item.get('href')
-        res=requests.get(url)
-        soup = BeautifulSoup(res.text, 'lxml')
-        title=soup.select('span.h2')[0].text
-        price=soup.select('span.price_num')[0].text
-        content=soup.select('div.TxtContent')[0].text
-        data.append([title,price,content])
-        sleep_time = random.randint(3,10)
-        print("sleep time: %s sec"%(sleep_time))
-        time.sleep(sleep_time)
+            url = item.get('href')
+            res=requests.get(url)
+            soup = BeautifulSoup(res.text, 'lxml')
+            title=soup.select('span.h2')[0].text
+            price=soup.select('span.price_num')[0].text
+            content=soup.select('div.TxtContent')[0].text
+            data.append([title,price,content])
+            sleep_time = random.randint(3,10)
+            print("sleep time: %s sec"%(sleep_time))
+            time.sleep(sleep_time)
 
         for li in soup.select('li.nav02 h4 a'):  
                 data1=[]  
