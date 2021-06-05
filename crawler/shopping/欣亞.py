@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[15]:
-
-
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -25,5 +19,4 @@ for i in jsondata:
         
 columns=['product','price']
 df = pd.DataFrame(data=data, columns=columns)
-# df.to_sql('sinya', engine, index= False,if_exists='replace')
 df.to_csv('sinya.csv',encoding='utf-8-sig')
