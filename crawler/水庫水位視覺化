@@ -1,0 +1,65 @@
+前陣子台灣缺水  去看了一下即時水位網站
+https://water.taiwanstat.com/
+做得很漂亮 於是想試試看一下他們的方式
+
+首先我們先去水利署找資料 發現他有每天公布的紀錄
+先做個header 讓伺服器認為我們是一般瀏覽者瀏覽 再用pandas讀取表格 這樣就可以快速解析
+正所謂有表格用pandas 沒表格就soup
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36'}
+url='https://fhy.wra.gov.tw/ReservoirPage_2011/StorageCapacity.aspx'
+res=requests.get(url,headers=headers)
+df = pd.read_html(res.text, encoding='utf-8',header=0)[0]
+
+可以看到表格的資料 開始選擇我們所需要的部分
+將名稱變更以方便之後判斷
+df['更新時間'] =df['即時水情資料']
+df['即時水位 %'] =df['即時水情資料.3']
+這邊就是我們所需要存取的部分 蓄水量 水庫名稱
+設定欄位名稱
+columns = ['水庫名稱','更新時間','即時水位 %']
+
+才能存放在pandas下 由於之後作圖需要 有些資料我們要先去掉特殊字元  和文字 才能轉 數字 方便繼續
+
+最後完整呈現資料抓取流程 在這邊用excel存取方便快速讀取
+
+import requests,json
+import pandas as pd 
+import numpy as np
+
+def Waterlevel():
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36'}
+    url='https://fhy.wra.gov.tw/ReservoirPage_2011/StorageCapacity.aspx'
+    res=requests.get(url,headers=headers)
+    df = pd.read_html(res.text, encoding='utf-8',header=0)[0]
+    df['更新時間'] =df['即時水情資料']
+    df['即時水位 %'] =df['即時水情資料.3']
+    
+    columns = ['水庫名稱','更新時間','即時水位 %']
+    waterdf = pd.DataFrame(data=df, columns=columns)
+    waterdf=waterdf[1:]
+    waterdf=waterdf[:-1]
+    waterdf['即時水位 %']=waterdf['即時水位 %'].str.replace('%','')
+    waterdf['即時水位 %']=waterdf['即時水位 %'].str.replace('--','0')
+    waterdf['即時水位 %']=pd.to_numeric(waterdf['即時水位 %'])
+    pd.options.display.float_format = '{:,.0f}'.format
+    waterdf.to_excel('water.xlsx')
+if __name__ == '__main__':
+    Waterlevel()     
+
+這時候excel有了水庫資料 我們挑選一個資料出來
+安裝一下pyecharts套件這樣才能製作動態圖
+
+
+import pandas as pd
+from pyecharts import options as opts
+from pyecharts.charts import Liquid
+df=pd.read_excel('water.xlsx')
+#我們提取一個來示範 所以欄位中的第0個 他的數值是100.00 
+#這時候 我們用round取整數 他還是會變成10000
+#整除後把這個df丟入c中 存成網頁 也可以選擇在jupyter notebook顯示
+df=df['即時水位 %'][0]
+df=round(df)//100
+
+c = (Liquid().add("lq", [df])set_global_opts(title_opts=opts.TitleOpts(title="流動水位")))
+c.render("water.html")
+#c.render_notebook() 
