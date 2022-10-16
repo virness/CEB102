@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+
+</head>
+<body><center>
+<h1>Momo 查詢網</h1><br><span>
+<a href="{{url_for('index')}}"style="text-decoration:none;">水庫水位</a>
+<a href="{{url_for('weather')}}"style="text-decoration:none;">天氣預報</a>
+<a href="{{url_for('pm25')}}"style="text-decoration:none;">空氣狀況</a>
+<a href="{{url_for('register')}}"style="text-decoration:none;">註冊點我</a>
+<a href="{{url_for('login')}}"style="text-decoration:none;">會員登入</a></span>
+<br><br><p><p>
+</center>
+
+     <iframe frameborder="0"
+             noresize="noresize"
+             style="position: absolute; background: transparent; width: 100%; height:100%;"
+             src="{{url_for('pm225')}}"
+             frameborder="0">
+     </iframe>
+
+
+
+</body>
+</html>

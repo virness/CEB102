@@ -1,0 +1,26 @@
+<html>
+<head>
+<!--引用 Bootstrap-->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/></head>
+<body><center><br><br><br><br><h1>會員註冊</h1><br>
+<div style="width:360px;height:360px;border:0px #cccccc dashed;">
+<!--表單內容-->
+<form action="/show" method="POST" >
+<div class="form-group"><input name="name" type="text" class="form-control" placeholder="姓名" required="required" minlength="2"/></div>
+<div class="form-group"><input name="email" class="form-control" type="email" placeholder="電子信箱" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/></div>
+<div class="form-group"><input name="birthday" class="form-control" type="date" min="1900-01-01" max="2022-01-01" required="required"/></div>
+<div class="form-group"><input name="phone" class="form-control" type="text" placeholder="手機號碼(格式:09xxxxxxxx)" required="required" maxlength="11" pattern="09\d{8}" oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的手機號碼格式:09xxxxxxxx');"/></div>
+<div class="form-group"><input id="inputPassword" name="password" class="form-control" type="password" placeholder="設定密碼(格式:含英數至少八個位數)" pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$" required="required" oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的密碼格式:含英數至少八個字元');"/></div>
+<div class="form-group"><input id="ConfirmPassword" name="ConfirmPassword" class="form-control" type="password" placeholder="確認密碼" required="required" oninput="setCustomValidity('');" onchange="if(document.getElementById('inputPassword').value != document.getElementById('ConfirmPassword').value){setCustomValidity('密碼不吻合');}"/></div>
+<div class="form-group"><input name="addr" type="text" class="form-control" placeholder="地址" required="required" minlength="3"/></div>
+<input type="submit" value="註冊" class="btn btn-danger btn-block" />
+</form>
+
+</div>
+
+</center>
+<center>
+<h3></div><a href="{{url_for('index')}}">回首頁</a></h3>
+</center>
+</body>
+</html>

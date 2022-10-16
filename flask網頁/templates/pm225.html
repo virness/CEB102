@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_67150f8a33ab585cc718f83070f86084 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_67150f8a33ab585cc718f83070f86084" ></div>
+        
+</body>
+<script>    
+    
+            var map_67150f8a33ab585cc718f83070f86084 = L.map(
+                "map_67150f8a33ab585cc718f83070f86084",
+                {
+                    center: [23.5, 121.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 8,
+                    zoomControl: true,
+                    preferCanvas: false,
+                    title: "\u5168\u53f0PM2.5\u5206\u5e03\u5716 \u8cc7\u6599\u4f86\u6e90:\u74b0\u5883\u8cc7\u6599\u958b\u653e\u5e73\u81fa",
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_05f61701cbbbc7dad847ea036d5116c6 = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg",
+                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by-sa/3.0\"\u003eCC BY SA\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_67150f8a33ab585cc718f83070f86084);
+        
+    
+            var marker_f3e834a686070c7f25156747b83a22bd = L.marker(
+                [23.7, 121.5],
+                {}
+            ).addTo(map_67150f8a33ab585cc718f83070f86084);
+        
+    
+            var div_icon_3a4366cebf7ddb334add88a5cda2fa06 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\u0027font-size:1.8em;color:red;\u0027\u003e\u5168\u53f0PM2.5\u5206\u5e03\u5716 \u003cbr\u003e\u8cc7\u6599\u4f86\u6e90:\u74b0\u5883\u8cc7\u6599\u958b\u653e\u5e73\u81fa \u003cbr\u003e 0-9\u7da0\u003cbr\u003e 10-15\u9ec3\u003cbr\u003e16-20\u7d05\u003cbr\u003e \u003e20 \u7d2b \u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [300, 36]});
+            marker_f3e834a686070c7f25156747b83a22bd.setIcon(div_icon_3a4366cebf7ddb334add88a5cda2fa06);
+        
+    
+            var feature_group_59e078896611bd7e1d56a60775671047 = L.featureGroup(
+                {}
+            ).addTo(map_67150f8a33ab585cc718f83070f86084);
+        
+    
+            var circle_marker_63dde8848cdae8dc01b5902ef2c4f562 = L.circleMarker(
+                [25.129167, 121.760056],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_63dde8848cdae8dc01b5902ef2c4f562.bindTooltip(
+                `<div>
+                     基隆市基隆
+PM2.5值:11
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_405f1be29dd2233b4383bafab1bd39ae = L.circleMarker(
+                [25.067131, 121.6423],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_405f1be29dd2233b4383bafab1bd39ae.bindTooltip(
+                `<div>
+                     新北市汐止
+PM2.5值:10
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_92aa44ee3711d40d03fb2b8d7b32aa06 = L.circleMarker(
+                [25.179667, 121.689881],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_92aa44ee3711d40d03fb2b8d7b32aa06.bindTooltip(
+                `<div>
+                     新北市萬里
+PM2.5值:20
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f534356ffbc66816bd66bb6e18f898d6 = L.circleMarker(
+                [24.977222, 121.537778],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_f534356ffbc66816bd66bb6e18f898d6.bindTooltip(
+                `<div>
+                     新北市新店
+PM2.5值:9
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e337afd232cbad1dbbb8eea2050cd9d9 = L.circleMarker(
+                [24.982528, 121.451861],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_e337afd232cbad1dbbb8eea2050cd9d9.bindTooltip(
+                `<div>
+                     新北市土城
+PM2.5值:7
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ae3ed7f04fc32c32d309ddd55b189bd0 = L.circleMarker(
+                [25.012972, 121.458667],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_ae3ed7f04fc32c32d309ddd55b189bd0.bindTooltip(
+                `<div>
+                     新北市板橋
+PM2.5值:9
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e2947ab57e2d3d701f23eb4ab84305b4 = L.circleMarker(
+                [25.037972, 121.4325],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_e2947ab57e2d3d701f23eb4ab84305b4.bindTooltip(
+                `<div>
+                     新北市新莊
+PM2.5值:11
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2859e961d04814e4dae8876383ba9f04 = L.circleMarker(
+                [25.06895, 121.481028],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_2859e961d04814e4dae8876383ba9f04.bindTooltip(
+                `<div>
+                     新北市菜寮
+PM2.5值:13
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b3e4a408bbe1051d38e08ec9880c3842 = L.circleMarker(
+                [25.077197, 121.376869],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_b3e4a408bbe1051d38e08ec9880c3842.bindTooltip(
+                `<div>
+                     新北市林口
+PM2.5值:9
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a2ce5d5c5bf6b81b5752f75c03b20c38 = L.circleMarker(
+                [25.1645, 121.449239],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_a2ce5d5c5bf6b81b5752f75c03b20c38.bindTooltip(
+                `<div>
+                     新北市淡水
+PM2.5值:8
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8f027283047b84e0c94885173a837e05 = L.circleMarker(
+                [25.10334003, 121.51666356],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_8f027283047b84e0c94885173a837e05.bindTooltip(
+                `<div>
+                     臺北市士林
+PM2.5值:10
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_561a6707ba8354785bef92f5ee372704 = L.circleMarker(
+                [25.062361, 121.526528],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_561a6707ba8354785bef92f5ee372704.bindTooltip(
+                `<div>
+                     臺北市中山
+PM2.5值:10
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c83b0a519f280a2cf1a5e3a93b4767ed = L.circleMarker(
+                [25.046503, 121.507972],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_c83b0a519f280a2cf1a5e3a93b4767ed.bindTooltip(
+                `<div>
+                     臺北市萬華
+PM2.5值:10
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_49217a562af2970990145f37d002c008 = L.circleMarker(
+                [25.020608, 121.529556],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_49217a562af2970990145f37d002c008.bindTooltip(
+                `<div>
+                     臺北市古亭
+PM2.5值:10
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8bc2a063618ed341d4a9743ba03d9db9 = L.circleMarker(
+                [25.05, 121.578611],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_8bc2a063618ed341d4a9743ba03d9db9.bindTooltip(
+                `<div>
+                     臺北市松山
+PM2.5值:9
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3daad03a3e0925a57e7b06ab460a6028 = L.circleMarker(
+                [25.0632, 121.513311],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_3daad03a3e0925a57e7b06ab460a6028.bindTooltip(
+                `<div>
+                     臺北市大同
+PM2.5值:19
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d24462b21542aa9e1d2a327bed77f0eb = L.circleMarker(
+                [24.98677778, 121.30872222],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_d24462b21542aa9e1d2a327bed77f0eb.bindTooltip(
+                `<div>
+                     桃園市桃園
+PM2.5值:12
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9826f09b9348e88d5ba46bf6ee9ce002 = L.circleMarker(
+                [25.060344, 121.201811],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_9826f09b9348e88d5ba46bf6ee9ce002.bindTooltip(
+                `<div>
+                     桃園市大園
+PM2.5值:10
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9cf10697ac3ba723761160f4b96a7141 = L.circleMarker(
+                [25.035503, 121.082761],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_9cf10697ac3ba723761160f4b96a7141.bindTooltip(
+                `<div>
+                     桃園市觀音
+PM2.5值:13
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_5170d4c8c3514cb277235057aa02dfa2 = L.circleMarker(
+                [24.952786, 121.203986],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_5170d4c8c3514cb277235057aa02dfa2.bindTooltip(
+                `<div>
+                     桃園市平鎮
+PM2.5值:11
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6af35335ac57f4f094fa0c2217964488 = L.circleMarker(
+                [24.863869, 121.21635],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_6af35335ac57f4f094fa0c2217964488.bindTooltip(
+                `<div>
+                     桃園市龍潭
+PM2.5值:4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_eec56a20d9e5eab3b6bc1a414260ca92 = L.circleMarker(
+                [24.900142, 121.038653],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_eec56a20d9e5eab3b6bc1a414260ca92.bindTooltip(
+                `<div>
+                     新竹縣湖口
+PM2.5值:11
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a965a8eacf6ddac1ac01a52b38d0bd90 = L.circleMarker(
+                [24.740644, 121.088903],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_a965a8eacf6ddac1ac01a52b38d0bd90.bindTooltip(
+                `<div>
+                     新竹縣竹東
+PM2.5值:5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e1e75fccee2d303c8034ca2c23773c21 = L.circleMarker(
+                [24.805619, 120.972075],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_e1e75fccee2d303c8034ca2c23773c21.bindTooltip(
+                `<div>
+                     新竹市新竹
+PM2.5值:7
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_bd5f4d3d64c37f84983e0f0fd188a2ab = L.circleMarker(
+                [24.696969, 120.898572],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_bd5f4d3d64c37f84983e0f0fd188a2ab.bindTooltip(
+                `<div>
+                     苗栗縣頭份
+PM2.5值:3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8756d9cc565a7d610b68ff56b54b6636 = L.circleMarker(
+                [24.565269, 120.8202],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_8756d9cc565a7d610b68ff56b54b6636.bindTooltip(
+                `<div>
+                     苗栗縣苗栗
+PM2.5值:6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_40ab8390cae597d9fe97e7fe18dfea7a = L.circleMarker(
+                [24.382942, 120.758833],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_40ab8390cae597d9fe97e7fe18dfea7a.bindTooltip(
+                `<div>
+                     苗栗縣三義
+PM2.5值:2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_791fb7a33dd3d604f2c70cccbbd0cda1 = L.circleMarker(
+                [24.256586, 120.741711],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_791fb7a33dd3d604f2c70cccbbd0cda1.bindTooltip(
+                `<div>
+                     臺中市豐原
+PM2.5值:4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c6a75dcac93bfda19b25f44c74325632 = L.circleMarker(
+                [24.225628, 120.568794],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_c6a75dcac93bfda19b25f44c74325632.bindTooltip(
+                `<div>
+                     臺中市沙鹿
+PM2.5值:2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4949b449f1a1a4ae9c84322d435c9f75 = L.circleMarker(
+                [24.09961111, 120.67844444],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_4949b449f1a1a4ae9c84322d435c9f75.bindTooltip(
+                `<div>
+                     臺中市大里
+PM2.5值:6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b999c7b0ca9ec09cfa9304dbdf8c85d1 = L.circleMarker(
+                [24.151958, 120.641092],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_b999c7b0ca9ec09cfa9304dbdf8c85d1.bindTooltip(
+                `<div>
+                     臺中市忠明
+PM2.5值:7
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ef36d8cec2e9ac0b89f081cdd72eeb98 = L.circleMarker(
+                [24.162197, 120.616917],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_ef36d8cec2e9ac0b89f081cdd72eeb98.bindTooltip(
+                `<div>
+                     臺中市西屯
+PM2.5值:5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_41132bc2fcd1236c2cb3772a13bc3e21 = L.circleMarker(
+                [24.066, 120.541519],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_41132bc2fcd1236c2cb3772a13bc3e21.bindTooltip(
+                `<div>
+                     彰化縣彰化
+PM2.5值:5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9a451f5cf9546a54335993d3ce9700e1 = L.circleMarker(
+                [24.131672, 120.469061],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_9a451f5cf9546a54335993d3ce9700e1.bindTooltip(
+                `<div>
+                     彰化縣線西
+PM2.5值:7
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6b4a4460f3e209e930446ee669f6976f = L.circleMarker(
+                [23.925175, 120.409653],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_6b4a4460f3e209e930446ee669f6976f.bindTooltip(
+                `<div>
+                     彰化縣二林
+PM2.5值:7
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_10f2172924f4336a74ea925a399683d9 = L.circleMarker(
+                [23.913, 120.685306],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_10f2172924f4336a74ea925a399683d9.bindTooltip(
+                `<div>
+                     南投縣南投
+PM2.5值:7
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_7602c7100197b0a02c42b4941966c171 = L.circleMarker(
+                [23.711853, 120.544994],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_7602c7100197b0a02c42b4941966c171.bindTooltip(
+                `<div>
+                     雲林縣斗六
+PM2.5值:12
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8707e57c9aed9a39bf3567167eba5597 = L.circleMarker(
+                [23.757547, 120.348742],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_8707e57c9aed9a39bf3567167eba5597.bindTooltip(
+                `<div>
+                     雲林縣崙背
+PM2.5值:8
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_0cc68cfce43fc86ecec373fb6767d707 = L.circleMarker(
+                [23.554839, 120.345531],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_0cc68cfce43fc86ecec373fb6767d707.bindTooltip(
+                `<div>
+                     嘉義縣新港
+PM2.5值:11
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e39e362b4592221c0d58e617ce2e908c = L.circleMarker(
+                [23.46712222, 120.24781111],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_e39e362b4592221c0d58e617ce2e908c.bindTooltip(
+                `<div>
+                     嘉義縣朴子
+PM2.5值:9
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8b52898132cdf0c76bbce53d54a76fd0 = L.circleMarker(
+                [23.702175, 120.19933333],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_8b52898132cdf0c76bbce53d54a76fd0.bindTooltip(
+                `<div>
+                     雲林縣臺西
+PM2.5值:10
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_79d829388893232441b4b5e66e0be859 = L.circleMarker(
+                [23.462778, 120.44083333],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_79d829388893232441b4b5e66e0be859.bindTooltip(
+                `<div>
+                     嘉義市嘉義
+PM2.5值:15
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4bb85a02ccc384a927cb00ed06230ca1 = L.circleMarker(
+                [23.305633, 120.31725],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_4bb85a02ccc384a927cb00ed06230ca1.bindTooltip(
+                `<div>
+                     臺南市新營
+PM2.5值:12
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_fa7939f81f2140e5aa61bcd4f62fed41 = L.circleMarker(
+                [23.115097, 120.297142],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_fa7939f81f2140e5aa61bcd4f62fed41.bindTooltip(
+                `<div>
+                     臺南市善化
+PM2.5值:17
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2e527761163c9de645f4122179665f84 = L.circleMarker(
+                [23.048197, 120.2175],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_2e527761163c9de645f4122179665f84.bindTooltip(
+                `<div>
+                     臺南市安南
+PM2.5值:19
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f357d1f7d6d7389c43250ba460ba2bcd = L.circleMarker(
+                [22.98525833, 120.22238056],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_f357d1f7d6d7389c43250ba460ba2bcd.bindTooltip(
+                `<div>
+                     臺南市臺南
+PM2.5值:21
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8481167022e5ee596797365caa2ab925 = L.circleMarker(
+                [22.883583, 120.530542],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_8481167022e5ee596797365caa2ab925.bindTooltip(
+                `<div>
+                     高雄市美濃
+PM2.5值:17
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e4a78299d98dcf68538c0c747a642535 = L.circleMarker(
+                [22.757506, 120.305689],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_e4a78299d98dcf68538c0c747a642535.bindTooltip(
+                `<div>
+                     高雄市橋頭
+PM2.5值:20
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4d7363393bb6a4ba0d8b4b5e41ecbf78 = L.circleMarker(
+                [22.689056, 120.332631],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_4d7363393bb6a4ba0d8b4b5e41ecbf78.bindTooltip(
+                `<div>
+                     高雄市仁武
+PM2.5值:21
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_fccf4c004958d3e4fc076e18840439f6 = L.circleMarker(
+                [22.627392, 120.358083],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_fccf4c004958d3e4fc076e18840439f6.bindTooltip(
+                `<div>
+                     高雄市鳳山
+PM2.5值:19
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_deb3e9a5bdbdb1ae2b80f8ab0940f94b = L.circleMarker(
+                [22.56413611, 120.425311],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_deb3e9a5bdbdb1ae2b80f8ab0940f94b.bindTooltip(
+                `<div>
+                     高雄市大寮
+PM2.5值:27
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ca4833260169cc8b9dd29f82f190ac63 = L.circleMarker(
+                [22.4795, 120.41175],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_ca4833260169cc8b9dd29f82f190ac63.bindTooltip(
+                `<div>
+                     高雄市林園
+PM2.5值:23
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c180f2c285fe165302091261c39dc37f = L.circleMarker(
+                [22.733667, 120.328289],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_c180f2c285fe165302091261c39dc37f.bindTooltip(
+                `<div>
+                     高雄市楠梓
+PM2.5值:16
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ab37e5a73f7c00cf62f472a61817d084 = L.circleMarker(
+                [22.674861, 120.292917],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_ab37e5a73f7c00cf62f472a61817d084.bindTooltip(
+                `<div>
+                     高雄市左營
+PM2.5值:22
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_bf436f4cae73f830e65daea9d5ad3a09 = L.circleMarker(
+                [22.63390278, 120.28676111],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_bf436f4cae73f830e65daea9d5ad3a09.bindTooltip(
+                `<div>
+                     高雄市前金
+PM2.5值:24
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3aa3ac4b50bf1d4701f46907dc98ce26 = L.circleMarker(
+                [22.605386, 120.307564],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_3aa3ac4b50bf1d4701f46907dc98ce26.bindTooltip(
+                `<div>
+                     高雄市前鎮
+PM2.5值:25
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f024a54ae7f720d046c3583249ce3859 = L.circleMarker(
+                [22.565833, 120.337736],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_f024a54ae7f720d046c3583249ce3859.bindTooltip(
+                `<div>
+                     高雄市小港
+PM2.5值:23
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_cb39fd1622637c84a689bd1e5253b7ca = L.circleMarker(
+                [22.673081, 120.488033],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_cb39fd1622637c84a689bd1e5253b7ca.bindTooltip(
+                `<div>
+                     屏東縣屏東
+PM2.5值:21
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_de4fd68f1608a60633cde0e09f00b25c = L.circleMarker(
+                [22.523108, 120.561175],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_de4fd68f1608a60633cde0e09f00b25c.bindTooltip(
+                `<div>
+                     屏東縣潮州
+PM2.5值:21
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3bcea8c0de1100702dc7f257325b33c3 = L.circleMarker(
+                [21.958069, 120.788928],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_3bcea8c0de1100702dc7f257325b33c3.bindTooltip(
+                `<div>
+                     屏東縣恆春
+PM2.5值:2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_18d248c93b86d5aea84347abea470dcf = L.circleMarker(
+                [22.755358, 121.15045],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_18d248c93b86d5aea84347abea470dcf.bindTooltip(
+                `<div>
+                     臺東縣臺東
+PM2.5值:1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1a2a5b33d05fca5d8d6eb28f5f18e078 = L.circleMarker(
+                [23.971306, 121.599769],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_1a2a5b33d05fca5d8d6eb28f5f18e078.bindTooltip(
+                `<div>
+                     花蓮縣花蓮
+PM2.5值:6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3e84012b373e8836124ca660470b7315 = L.circleMarker(
+                [25.182722, 121.529583],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_3e84012b373e8836124ca660470b7315.bindTooltip(
+                `<div>
+                     臺北市陽明
+PM2.5值:5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_35dd6f2a74f19f8e7704c737da80da5a = L.circleMarker(
+                [24.747917, 121.746394],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_35dd6f2a74f19f8e7704c737da80da5a.bindTooltip(
+                `<div>
+                     宜蘭縣宜蘭
+PM2.5值:4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4e303544020ce5d283c15aac141490f7 = L.circleMarker(
+                [24.632203, 121.792928],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_4e303544020ce5d283c15aac141490f7.bindTooltip(
+                `<div>
+                     宜蘭縣冬山
+PM2.5值:2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_5f5f7bc166f8614c8973d90f119b4a9c = L.circleMarker(
+                [25.072611, 121.493806],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_5f5f7bc166f8614c8973d90f119b4a9c.bindTooltip(
+                `<div>
+                     新北市三重
+PM2.5值:13
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2698d65b44dbe35e1268ec4c0ea6e899 = L.circleMarker(
+                [24.953278, 121.221667],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_2698d65b44dbe35e1268ec4c0ea6e899.bindTooltip(
+                `<div>
+                     桃園市中壢
+PM2.5值:11
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3522dad605b79d81c5b8579609ebdcde = L.circleMarker(
+                [23.756389, 120.677306],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_3522dad605b79d81c5b8579609ebdcde.bindTooltip(
+                `<div>
+                     南投縣竹山
+PM2.5值:10
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f0bf97f82f6f38c2c8b6179a705a34d4 = L.circleMarker(
+                [25.017, 121.516306],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_f0bf97f82f6f38c2c8b6179a705a34d4.bindTooltip(
+                `<div>
+                     新北市永和
+PM2.5值:9
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_70d32b74449e414f7794d1e45e5967c9 = L.circleMarker(
+                [22.608711, 120.312017],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_70d32b74449e414f7794d1e45e5967c9.bindTooltip(
+                `<div>
+                     高雄市復興
+PM2.5值:24
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_53e2d45cfddda8905240a4d8c6223ef6 = L.circleMarker(
+                [23.968842, 120.967903],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_53e2d45cfddda8905240a4d8c6223ef6.bindTooltip(
+                `<div>
+                     南投縣埔里
+PM2.5值:5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ef07fb34b4ea4d9bc282747976a51ebb = L.circleMarker(
+                [26.25799556, 120.59128111],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_ef07fb34b4ea4d9bc282747976a51ebb.bindTooltip(
+                `<div>
+                     連江縣馬祖
+PM2.5值:11
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_cb07eef3fec7f076ff0e630502fe3b95 = L.circleMarker(
+                [24.432133, 118.312256],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_cb07eef3fec7f076ff0e630502fe3b95.bindTooltip(
+                `<div>
+                     金門縣金門
+PM2.5值:8
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3edd23f245b7231c9040d62241e76c80 = L.circleMarker(
+                [23.569031, 119.566158],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_3edd23f245b7231c9040d62241e76c80.bindTooltip(
+                `<div>
+                     澎湖縣馬公
+PM2.5值:11
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_40f64af4aebd1b53bf6f2874252f0d5e = L.circleMarker(
+                [23.045083, 121.161933],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_40f64af4aebd1b53bf6f2874252f0d5e.bindTooltip(
+                `<div>
+                     臺東縣關山
+PM2.5值:0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a181017936f1f46bec84743fdd4ac382 = L.circleMarker(
+                [23.753506, 120.251825],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_a181017936f1f46bec84743fdd4ac382.bindTooltip(
+                `<div>
+                     雲林縣麥寮
+PM2.5值:10
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_921e6db3f7e41e367443aa4f1d7a34b7 = L.circleMarker(
+                [25.29228, 121.54738],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_921e6db3f7e41e367443aa4f1d7a34b7.bindTooltip(
+                `<div>
+                     新北市富貴角
+PM2.5值:16
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9c44538ec1995562d985b0e819496a07 = L.circleMarker(
+                [23.85493056, 120.26964167],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_9c44538ec1995562d985b0e819496a07.bindTooltip(
+                `<div>
+                     彰化縣大城
+PM2.5值:9
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_198b2b99791d9092d614d86e510e340b = L.circleMarker(
+                [23.96117, 120.56373],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_198b2b99791d9092d614d86e510e340b.bindTooltip(
+                `<div>
+                     彰化縣彰化(員林)
+PM2.5值:6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ee61e826ddde5b4f22b7ea9e34499ef7 = L.circleMarker(
+                [22.87985556, 120.24535],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_ee61e826ddde5b4f22b7ea9e34499ef7.bindTooltip(
+                `<div>
+                     高雄市高雄(湖內)
+PM2.5值:19
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_cdf8b09bb00853e06d02e07bc42a60c2 = L.circleMarker(
+                [23.17904722, 120.24583056],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_cdf8b09bb00853e06d02e07bc42a60c2.bindTooltip(
+                `<div>
+                     臺南市臺南(麻豆)
+PM2.5值:13
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ad5df1057802f3ac45e86d7caed1134e = L.circleMarker(
+                [22.35222, 120.37722],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_ad5df1057802f3ac45e86d7caed1134e.bindTooltip(
+                `<div>
+                     屏東縣屏東(琉球)
+PM2.5值:24
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f536ce01f43b43314d4e62a52497fe8e = L.circleMarker(
+                [25.00121944, 121.31820833],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_f536ce01f43b43314d4e62a52497fe8e.bindTooltip(
+                `<div>
+                     桃園市桃園(三民)
+PM2.5值:8
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a4be1fb830b717ca7eca1f83d87f47e9 = L.circleMarker(
+                [24.94902778, 121.38352778],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_a4be1fb830b717ca7eca1f83d87f47e9.bindTooltip(
+                `<div>
+                     新北市新北(樹林)
+PM2.5值:9
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_44ed8a02c9f63952509ff866b92e5966 = L.circleMarker(
+                [23.23688056, 120.18339722],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_44ed8a02c9f63952509ff866b92e5966.bindTooltip(
+                `<div>
+                     臺南市臺南(學甲)
+PM2.5值:11
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1c3b76ddc1afab36c45026f8b4eadc6d = L.circleMarker(
+                [22.38474167, 120.59036944],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59e078896611bd7e1d56a60775671047);
+        
+    
+            circle_marker_1c3b76ddc1afab36c45026f8b4eadc6d.bindTooltip(
+                `<div>
+                     屏東縣屏東(枋寮)
+PM2.5值:19
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>

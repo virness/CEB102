@@ -1,0 +1,24 @@
+<html>
+<head>
+<!--引用 Bootstrap-->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/></head>
+<body><center><br><br><br><br><h1>會員登入</h1>	<h3><font color="#FF0000">
+{% for msg in msgs%}
+	{{msg|safe }}
+{% endfor %}</font></h3><br>
+<div style="width:360px;height:160px;border:0px #cccccc dashed;">
+
+<!--表單內容-->
+<form action="/member" method="POST" >
+<div class="form-group">信箱&nbsp<input name="email" class="form-control" type="email" required="required" /></div>
+<div class="form-group">密碼&nbsp<input id="inputPassword" name="password" class="form-control" type="password" required="required" /></div>
+<br>
+<input type="submit" value="送出" class="btn btn-danger btn-block" />
+</form>
+</div>
+<br><br><br><br><br><br><br><h3><a href="{{url_for('index')}}">回首頁</a></h3>
+
+
+</center>
+</body>
+</html>

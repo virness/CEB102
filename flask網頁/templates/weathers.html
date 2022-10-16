@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_24067bf3fb9b943be760a5353e773d9f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_24067bf3fb9b943be760a5353e773d9f" ></div>
+        
+</body>
+<script>    
+    
+            var map_24067bf3fb9b943be760a5353e773d9f = L.map(
+                "map_24067bf3fb9b943be760a5353e773d9f",
+                {
+                    center: [23.5, 121.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 8,
+                    zoomControl: true,
+                    preferCanvas: false,
+                    title: "\u5929\u6c23\u9810\u5831\u5206\u5e03\u5716 \u8cc7\u6599\u4f86\u6e90:\u6c23\u8c61\u5c40",
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c102d0d1af446adc86b804d473394424 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_24067bf3fb9b943be760a5353e773d9f);
+        
+    
+            var marker_eb50a7be45f7efea6fc9492501e5354a = L.marker(
+                [23.7, 121.5],
+                {}
+            ).addTo(map_24067bf3fb9b943be760a5353e773d9f);
+        
+    
+            var div_icon_a5538168bf983b99626f731a93b93948 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\u0027font-size:1.8em;color:black;\u0027\u003e\u5929\u6c23\u9810\u5831 \u003cbr\u003e\u8cc7\u6599\u4f86\u6e90:\u74b0\u5883\u8cc7\u6599\u958b\u653e\u5e73\u81fa \u003cbr\u003e 20%\u4ee5\u4e0b\u7da0\u8272\u003cbr\u003e 20-50\u9ec3\u8272\u003cbr\u003e50-70 \u7d05\u8272\u003cbr\u003e  70\u003e\u85cd\u8272 \u003c/div\u003e", "iconAnchor": [0, 0], "iconSize": [300, 36]});
+            marker_eb50a7be45f7efea6fc9492501e5354a.setIcon(div_icon_a5538168bf983b99626f731a93b93948);
+        
+    
+            var feature_group_576f627dfd541df70d0c9ea05af013c0 = L.featureGroup(
+                {}
+            ).addTo(map_24067bf3fb9b943be760a5353e773d9f);
+        
+    
+            var circle_marker_577860bb06267eaae6f12783416b9268 = L.circleMarker(
+                [23.4590779806957, 120.322852600499],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_577860bb06267eaae6f12783416b9268.bindTooltip(
+                `<div>
+                     嘉義縣
+溫度預估:23~27
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b88e5756edd6645a2f2d9e78f49130bb = L.circleMarker(
+                [25.0095271123484, 121.462476980773],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_b88e5756edd6645a2f2d9e78f49130bb.bindTooltip(
+                `<div>
+                     新北市
+溫度預估:23~24
+降雨機率40 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_87126b62305adb911e47a7ac5258090c = L.circleMarker(
+                [23.4792077468129, 120.441003379661],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_87126b62305adb911e47a7ac5258090c.bindTooltip(
+                `<div>
+                     嘉義市
+溫度預估:23~28
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_09720034bb396023852529db84118143 = L.circleMarker(
+                [24.8386780293195, 121.009059526433],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_09720034bb396023852529db84118143.bindTooltip(
+                `<div>
+                     新竹縣
+溫度預估:23~25
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2bfc2bab2493f3c29e9e81e3153981ef = L.circleMarker(
+                [24.8014358349583, 120.971089313202],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_2bfc2bab2493f3c29e9e81e3153981ef.bindTooltip(
+                `<div>
+                     新竹市
+溫度預估:23~25
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_595393b0ebd7f0a3bb58a4021d6defc6 = L.circleMarker(
+                [25.0422333715639, 121.534151729434],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_595393b0ebd7f0a3bb58a4021d6defc6.bindTooltip(
+                `<div>
+                     臺北市
+溫度預估:22~23
+降雨機率60 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_66035d1461251128562ca27ad3c0e4c0 = L.circleMarker(
+                [22.9970334574091, 120.212958067762],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_66035d1461251128562ca27ad3c0e4c0.bindTooltip(
+                `<div>
+                     臺南市
+溫度預估:24~28
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e19fce30da7adac8615569ae0032acf4 = L.circleMarker(
+                [24.7553053364841, 121.758289676841],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_e19fce30da7adac8615569ae0032acf4.bindTooltip(
+                `<div>
+                     宜蘭縣
+溫度預估:23~24
+降雨機率80 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e8efe52c0f253e304e89c757a7e0718f = L.circleMarker(
+                [24.570292539903, 120.822282308968],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_e8efe52c0f253e304e89c757a7e0718f.bindTooltip(
+                `<div>
+                     苗栗縣
+溫度預估:23~25
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3049bfa74b5944c2747af927e242761b = L.circleMarker(
+                [23.7122524978223, 120.540894407453],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_3049bfa74b5944c2747af927e242761b.bindTooltip(
+                `<div>
+                     雲林縣
+溫度預估:22~27
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1bb2729dcfbe629fb339b136152107e1 = L.circleMarker(
+                [23.9930619221882, 121.601066813719],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_1bb2729dcfbe629fb339b136152107e1.bindTooltip(
+                `<div>
+                     花蓮縣
+溫度預估:24~25
+降雨機率50 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_7788fc14d421258a013887c718e20c74 = L.circleMarker(
+                [24.1373151652316, 120.686715146599],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_7788fc14d421258a013887c718e20c74.bindTooltip(
+                `<div>
+                     臺中市
+溫度預估:24~27
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8ef3bc6582f8c96be91a61c2a09666c8 = L.circleMarker(
+                [22.7942687955759, 121.123080548325],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_8ef3bc6582f8c96be91a61c2a09666c8.bindTooltip(
+                `<div>
+                     臺東縣
+溫度預估:24~26
+降雨機率20 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6411d77e5cf931601c9455906bd3d3ea = L.circleMarker(
+                [24.9887280487729, 121.314329385556],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_6411d77e5cf931601c9455906bd3d3ea.bindTooltip(
+                `<div>
+                     桃園市
+溫度預估:23~24
+降雨機率30 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f1f25d4819db0074459fe502639b11de = L.circleMarker(
+                [23.9061701426377, 120.688889156729],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_f1f25d4819db0074459fe502639b11de.bindTooltip(
+                `<div>
+                     南投縣
+溫度預估:23~28
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_880bfa976047cb4c17d353e85de5de10 = L.circleMarker(
+                [22.6393113136105, 120.302094285443],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_880bfa976047cb4c17d353e85de5de10.bindTooltip(
+                `<div>
+                     高雄市
+溫度預估:25~29
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_992bab6124735d3a449028ec7ae1e168 = L.circleMarker(
+                [24.4296534510225, 118.360076582164],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_992bab6124735d3a449028ec7ae1e168.bindTooltip(
+                `<div>
+                     金門縣
+溫度預估:22~24
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a12dc1ab6491838101f00c0f19e492dd = L.circleMarker(
+                [22.6712809965638, 120.486353013081],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_a12dc1ab6491838101f00c0f19e492dd.bindTooltip(
+                `<div>
+                     屏東縣
+溫度預估:24~29
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_244a57fb8f18657229d17f92d654109d = L.circleMarker(
+                [25.1330700437524, 121.739218623775],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_244a57fb8f18657229d17f92d654109d.bindTooltip(
+                `<div>
+                     基隆市
+溫度預估:23~24
+降雨機率70 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_92da646be583eca80be308ebdc5cd3c6 = L.circleMarker(
+                [23.5666338996394, 119.576553537766],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_92da646be583eca80be308ebdc5cd3c6.bindTooltip(
+                `<div>
+                     澎湖縣
+溫度預估:25~25
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ba2c43f7b2590104d4c6f7eb77b69b42 = L.circleMarker(
+                [24.0813947988592, 120.538145786838],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_ba2c43f7b2590104d4c6f7eb77b69b42.bindTooltip(
+                `<div>
+                     彰化縣
+溫度預估:23~26
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_95fd221671ced6e2d24fb1d1e58e74d2 = L.circleMarker(
+                [26.1605028770169, 119.94356787643],
+                {"bubblingMouseEvents": true, "color": "grey", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(feature_group_576f627dfd541df70d0c9ea05af013c0);
+        
+    
+            circle_marker_95fd221671ced6e2d24fb1d1e58e74d2.bindTooltip(
+                `<div>
+                     連江縣
+溫度預估:21~22
+降雨機率10 %
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>

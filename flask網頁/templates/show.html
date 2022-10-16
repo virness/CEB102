@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body><center>
+<br><br><br><br><br>
+<h1>會員資料</h1><br>
+<table class="table" cellpadding="10" border='1'>
+  <thead>
+    <tr>
+      <th scope="col">姓名</th>
+      <th scope="col">信箱</th>
+      <th scope="col">電話</th>
+      <th scope="col">生日</th>
+      <th scope="col">地址</th>	
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{name}}</th>
+      <td>{{email}}</td>
+      <td>{{phone}}</td>
+      <td>{{birthday}}</td>
+      <td>{{addr}}</td>
+    </tr>
+  </tbody>
+</table><br><br>
+
+<a href="{{url_for('register')}}">回上一頁</a>
+<a href="{{url_for('index')}}">回首頁</a>
+</center>
+</body>
+</html>
+
