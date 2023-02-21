@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lottery Numbers</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    table {
+      width: 20%;
+      text-align: center;
+      border-collapse: separate;
+      border-spacing: 0px;
+      border: 0px solid black;
+      table-layout: auto;
+      
+    }
+    td {
+  padding: 5px;
+}
+    td.number {
+      position: relative;
+      display: inline-block;
+      margin: 0px;
+      padding: 0px;
+      width: 60px;
+      height: 60px;
+      border: 0px solid black;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 55px;
+      background-color: yellow;
+      color: red;
+      font-weight:bold;
+      font-size: 45px;
+    }
+    td.group {
+  font-size: 45px;
+  color: blue;
+  padding-right: 0px;
+}
+h1 {
+  font-size: 45px;
+}
+h2 {
+  font-size: 20px;
+}
+
+  </style>
+</head>
+<body>
+  <center>
+    <h1 >今彩539 自動選號</h1>
+    <h1 >按下F5，即可重選</h1><br>
+    <h2 ><a href="{{ url_for('lottom') }}" style="text-decoration:none;">威力彩，自動選號</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{url_for('biglottom')}}" style="text-decoration:none;" font-size: 20px;>大樂透，自動選號</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{url_for('twowin')}}" style="text-decoration:none;">雙贏彩，自動選號</a></h2><br><br>
+    <table cellpadding="'8" border="0">
+      {% for group, numbers in results %}
+        <tr>
+          <td class="group">第 {{ group }} 組：</td>
+          {% for number in numbers %}
+            <td class="number">{{ number }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+  </center>
+</body>
+</html>
