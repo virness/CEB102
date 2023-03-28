@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>料理大師</title>
+    
+    
+    <style>
+.chat-labels label,
+.chat-labels select {
+  font-size: 21px;
+}
+.chat-labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.chat-labels label {
+  margin-right: 0.5em;
+}
+
+.chat-labels select {
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: none;
+  margin-right: 0.5em;
+}
+
+.chat-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 700px;
+  max-width: 700px;
+  margin: 0 auto;
+  gap: 0.5em;
+  margin-bottom: 5em; /* 這裡修改 */
+}
+
+.chat-input input {
+  flex-grow: 1;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: none;
+  margin-right: 0.5em;
+}
+
+.chat-input button {
+  padding: 0.6em 1.2em;
+  font-size: 24px;
+  border-radius: 0.5em;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .chat-container {
+        width: 700px;
+     
+        max-height: 50vh;
+        padding: 1em;
+        background-color: #f7f7f7;
+        margin: 0 auto;
+        overflow-y: scroll;
+      }
+      .chat-input {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 700px;
+        max-width: 700px;
+        margin: 0 auto;
+        gap: 0.5em;
+        margin-bottom: 1em;
+      }
+
+      .chat-input label {
+        display: inline-block;
+        margin-right: 0.5em;
+      }
+
+      .chat-input input {
+        width: calc(700px - 170px);
+        padding: 0.5em;
+        border-radius: 0.5em;
+        border: none;
+        margin-right: 0.5em;
+      }
+
+      .chat-log {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+      }
+
+      .chat-message {
+        background-color: #ccc;
+        padding: 0.5em;
+        border-radius: 0.5em;
+        align-self: flex-start;
+        max-width: 80%;
+      }
+
+      .chat-message.sent {
+        align-self: flex-end;
+        background-color: #f5f5f5;
+      }
+
+      .chat-input button {
+        padding: 0.6em 1.2em;
+        font-size: 24px;
+        border-radius: 0.5em;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+      }
+      .chat-container .chat-log,.chat-input input {
+        font-size: 24px;
+      }
+      nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin-left: 2em; /* 修改這裡以使選單向右移動 */
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 2em;
+  padding: 0;
+  transform: translateY(-100%); /* 修改這裡以使選單向上移動 */
+}
+
+nav li {
+  display: block;
+  margin-bottom: 2em;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 21px;
+}
+
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li style="margin-bottom: 1em;">
+          <a href="/">首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;頁</a>
+        </li>
+        <li>
+          <a href="https://www.google.com" target="_blank">來去買菜</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="chat-container">
+      <div class="chat-log">
+        {% if response %}
+          <p> {{response}} </p>
+        {% endif %}
+      </div>
+    </div>
+    
+    <form id="chat-form" method="POST" action="/question" enctype="multipart/form-data">
+      <div class="chat-labels">
+        <label for="num_people" class="form-label">請選擇人數：</label>
+        <select name="num_people" id="num_people" class="form-select">
+          <option value="1">1 人</option>
+          <option value="2">2 人</option>
+          <option value="3">3 人</option>
+          <option value="4">4 人</option>
+        </select>
+        <label for="dietary_restrictions" class="form-label">請選擇飲食限制：</label>
+        <select name="dietary_restrictions" id="dietary_restrictions" class="form-select">
+          <option value="alleat">無任何禁忌</option>
+          <option value="vegetarian">素食主義者</option>
+          <option value="pescetarian">只吃魚跟蛋素食主義者</option>
+          <option value="no_beef">有人不吃牛</option>
+          <option value="no_pork">有人不吃豬</option>
+        </select>
+      </div>
+      <div class="chat-input">
+        <input type="text" name="message" id="message" placeholder="請輸入你想問的料理問題" />
+        <button type="submit" id="send-button">送出</button>
+      </div>
+    </form>
+ </body>
+</html>
