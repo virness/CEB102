@@ -1,0 +1,500 @@
+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
+
+import 'package:path_provider/path_provider.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/services.dart';
+import 'package:video_player/video_player.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+void main() {
+  runApp(MyApp());
+}
+Future<String> fetchGPT3Response(String prompt) async {
+  final apiKey = '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';
+  // final url = 'https://api.openai.com/v1/chat/completions';
+  final url='';
+  final headers = {
+    'Authorization': 'Bearer $apiKey',
+    'Content-Type': 'application/json',
+  };
+  final body = jsonEncode({
+    'model': 'gpt-3.5-turbo',
+    'messages': [
+      {'role': 'system', 'content': 'You are a helpful assistant.'},
+      {'role': 'user', 'content': prompt}
+    ]
+  });
+
+  final response = await http.post(
+    Uri.parse(url),
+    headers: headers,
+    body: body,
+  );
+
+  if (response.statusCode == 200) {
+    final data = jsonDecode(response.body);
+    return data['choices'][0]['message']['content'];
+  } else {
+    return 'Failed to fetch GPT-3.5 Turbo response: ${response.body}';
+  }
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MSNStyleChat(),
+    );
+  }
+}
+class FullScreenVideoPage extends StatefulWidget {
+final VideoPlayerController controller;
+
+FullScreenVideoPage({required this.controller});
+
+@override
+_FullScreenVideoPageState createState() => _FullScreenVideoPageState();
+}
+
+class _FullScreenVideoPageState extends State<FullScreenVideoPage> {
+  late VideoPlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = widget.controller;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Video Player"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.close),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Center(
+              child: _controller.value.isInitialized
+                  ? AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: VideoPlayer(_controller),
+              )
+                  : CircularProgressIndicator(),
+            ),
+          ),
+          VideoProgressIndicator(
+            _controller,
+            allowScrubbing: true,
+          ),
+          Text("Total duration: ${_controller.value.duration.inSeconds} seconds"),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                _controller.value.isPlaying
+                    ? _controller.pause()
+                    : _controller.play();
+              });
+            },
+            child: Icon(
+              _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MSNStyleChat extends StatefulWidget {
+  @override
+  _MSNStyleChatState createState() => _MSNStyleChatState();
+}
+
+class _MSNStyleChatState extends State<MSNStyleChat> {
+  TextEditingController _searchController = TextEditingController();
+  TextEditingController _messageController = TextEditingController();
+  List<Map<String, dynamic>> messages = [];
+  TapDownDetails? tapPosition;
+  int? selectedImageIndex;
+  VideoPlayerController? _videoPlayerController;
+  void _playVideoFullScreen(VideoPlayerController controller) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FullScreenVideoPage(controller: controller),
+      ),
+    );
+  }
+  Future<void> _saveMedia(Map<String, dynamic> message) async {
+    if (message['type'] == 'image' || message['type'] == 'video' || message['type'] == 'file') {
+      final directory = await getApplicationDocumentsDirectory();
+      final path = directory.path;
+      final ext = message['type'] == 'image' ? '.png' : (message['type'] == 'video' ? '.mp4' : '.file');
+      final file = File('$path/media$ext');
+      await file.writeAsBytes(message['bytes'] as Uint8List);
+      final result = await ImageGallerySaver.saveFile(file.path);
+      if (result['isSuccess']) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('儲存成功!'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('儲存失敗，請重試'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    }
+  }
+  @override
+  void dispose() {
+    for (var message in messages) {
+      if (message['type'] == 'video') {
+        (message['controller'] as VideoPlayerController).dispose();
+      }
+    }
+    super.dispose();
+  }
+
+
+  void _addMessage(String content, {String? type, Uint8List? bytes}) {
+    final message = {
+      'content': content,
+      'type': type ?? 'text',
+      'time': DateFormat('hh:mm a').format(DateTime.now()),
+      'bytes': bytes,
+    };
+
+    if (type == 'video') {
+      final tempDir = Directory.systemTemp;
+      final file = File('${tempDir.path}/temp_video.mp4');
+      file.writeAsBytesSync(bytes!);
+
+      message['controller'] = VideoPlayerController.file(file)
+        ..initialize().then((_) {
+          setState(() {});
+        });
+    }
+
+    setState(() {
+      messages.add(message);
+    });
+  }
+
+
+  Future<void> _pickImage() async {
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      final bytes = await pickedFile.readAsBytes();
+      _addMessage(pickedFile.path, type: 'image', bytes: bytes);
+    }
+  }
+
+  Future<void> _pickVideo() async {
+    final pickedFile = await ImagePicker().pickVideo(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      final bytes = await pickedFile.readAsBytes();
+      _videoPlayerController = VideoPlayerController.file(File(pickedFile.path))
+        ..initialize().then((_) {
+          setState(() {});
+        });
+      _addMessage(pickedFile.path, type: 'video', bytes: bytes);
+    }
+  }
+
+  Future<void> _pickFile() async {
+    final result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      final path = result.files.single.path!;
+      _addMessage(path, type: 'file');
+    }
+  }
+
+  void _showMessageOptions(BuildContext context, int index) {
+    final RenderBox overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
+
+    showMenu(
+      context: context,
+      position: RelativeRect.fromRect(
+        tapPosition!.globalPosition & Size(40, 40),
+        Offset.zero & overlay.size,
+      ),
+      items: <PopupMenuEntry<String>>[
+        PopupMenuItem<String>(
+          value: 'copy',
+          child: Text('複製訊息'),
+        ),
+        PopupMenuItem<String>(
+          value: 'delete',
+          child: Text('刪除訊息'),
+        ),
+        PopupMenuItem<String>(
+          value: 'recall',
+          child: Text('回復訊息'),
+        ),
+      ],
+    ).then((value) {
+      if (value == 'copy') {
+        Clipboard.setData(ClipboardData(text: messages[index]['content']));
+      } else if (value == 'delete') {
+        setState(() {
+          messages.removeAt(index);
+        });
+      } else if (value == 'recall') {
+        // Implement your recall action here
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("MSN Style Chat App"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.contact_page),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                hintText: "Search...",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: messages.length,
+              itemBuilder: (context, index) {
+                final message = messages[index];
+                Widget contentWidget;
+
+                if (message['type'] == 'text') {
+                  contentWidget = Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        message['content'],
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                      Text(
+                        message['time'],
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  );
+                } else if (message['type'] == 'image') {
+                  contentWidget = Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return Dialog(
+                                child: Image.memory(
+                                  message['bytes'] as Uint8List,
+                                  fit: BoxFit.contain,
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        child: Image.memory(
+                          message['bytes'] as Uint8List,
+                          fit: BoxFit.contain,
+                          width: 100, // 限制寬度
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.save),
+                            onPressed: () async {
+                              await _saveMedia(message);
+                            },
+                          ),
+                          Text(
+                            message['time'],
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                }
+
+
+
+                else if (message['type'] == 'video') {
+                  VideoPlayerController? controller = message['controller'];
+                  contentWidget = Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      controller != null && controller.value.isInitialized
+                          ? Stack(
+                        children: [
+                          AspectRatio(
+                            aspectRatio: controller.value.aspectRatio,
+                            child: VideoPlayer(controller),
+                          ),
+                          Positioned.fill(
+                            child: IconButton(
+                              icon: Icon(
+                                controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+                                color: Colors.black,
+                              ),
+                              onPressed: () {
+                                _playVideoFullScreen(controller);  // 在這裡調用新函數
+                              },
+                            ),
+                          ),
+                        ],
+                      )
+                          : Text("Loading video..."),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.save),
+                            onPressed: () async {
+                              await _saveMedia(message);
+                            },
+                          ),
+                          Text(
+                            message['time'],
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                }
+                else if (message['type'] == 'file') {
+                  contentWidget = Text(
+                    "File: ${message['content']}",
+                  );
+                } else {
+                  contentWidget = Text("Unknown type");
+                }
+
+                return GestureDetector(
+                    onTapDown: (details) => tapPosition = details,  // 設置 tapPosition
+                    onLongPress: () {
+                      _showMessageOptions(context, index);
+                    },
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                      constraints: BoxConstraints(maxWidth: 200),
+                      padding: EdgeInsets.all(8.0),
+                      margin: EdgeInsets.all(8.0),
+                      decoration: (message['type'] == 'image' || message['type'] == 'video')
+                          ? null  // 如果是圖片，則不設置背景
+                          : BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          contentWidget,
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              IconButton(
+                icon: Icon(Icons.image),
+                onPressed: _pickImage,
+              ),
+              IconButton(
+                icon: Icon(Icons.videocam),
+                onPressed: _pickVideo,
+              ),
+              IconButton(
+                icon: Icon(Icons.attach_file),
+                onPressed: _pickFile,
+              ),
+            ],
+          ),
+          Container(
+            padding: EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _messageController,
+                    decoration: InputDecoration(
+                      hintText: "Type a message...",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.send),
+                  onPressed: () async {
+                    String messageText = _messageController.text;
+                    _addMessage(messageText);  // 將用戶的消息添加到聊天窗口
+                    String translatedText = await fetchGPT3Response("Translate the following to English: $messageText");  // 獲取翻譯
+                    _addMessage(translatedText);  // 將翻譯結果添加到聊天窗口
+                    _messageController.clear();  // 清空輸入框
+                  },
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
