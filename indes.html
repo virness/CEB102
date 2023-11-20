@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=800, initial-scale=1.0">
+    <title>井字遊戲</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        #tic-tac-toe-board {
+            margin: 20px auto;
+            width: 600px;
+            height: 600px;
+            display: grid;
+            grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+        }
+
+        .cell {
+            border: 1px solid #333;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            font-size: 50px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .cell:nth-child(odd) {
+            background-color: #ddd;
+        }
+
+        .cell:hover {
+            background-color: #eee;
+        }
+
+        .cell.x {
+            color: red;
+        }
+
+        .cell.o {
+            color: blue;
+        }
+        #restart-button {
+            background-color: #4CAF50; /* 按钮颜色 */
+            color: white; /* 文字颜色 */
+            padding: 15px 32px; /* 内部填充 */
+            text-align: center; /* 文字居中 */
+            text-decoration: none; /* 去除下划线 */
+            display: inline-block; /* 显示为内联块 */
+            font-size: 16px; /* 字体大小 */
+            margin: 4px 2px; /* 外部间距 */
+            cursor: pointer; /* 鼠标样式 */
+            border: none; /* 去除边框 */
+            border-radius: 5px; /* 边角圆滑 */
+            box-shadow: 0 9px #999; /* 阴影效果 */
+        }
+
+        #restart-button:hover {background-color: #3e8e41}
+
+        #restart-button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666; /* 点击时的阴影 */
+            transform: translateY(4px); /* 点击时向下移动 */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>井字遊戲</h1>
+    <div id="game-status"></div>
+    <button id="restart-button">重新開始</button>
+    <div id="tic-tac-toe-board">
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const board = document.getElementById('tic-tac-toe-board');
+    const restartButton = document.getElementById('restart-button');
+    let currentPlayer = 'X'; // Player always starts
+    let gameActive = true;
+
+    board.addEventListener('click', (event) => {
+        // Player's turn
+        if (event.target.classList.contains('cell') && gameActive && event.target.textContent === '') {
+            makeMove(event.target, 'X');
+            if (!checkForEndOfGame()) {
+                computerMove();
+                checkForEndOfGame();
+            }
+        }
+    });
+
+    restartButton.addEventListener('click', restartGame);
+
+    function makeMove(cell, player) {
+        cell.textContent = player;
+        cell.classList.add(player.toLowerCase());
+    }
+    function computerMove() {
+        const cells = Array.from(document.querySelectorAll('.cell'));
+        let moved = false;
+
+        // 1. 阻止玩家获胜
+        moved = checkAndPlay(cells, 'X');
+        if (moved) {
+            checkGameStatus();
+            return;
+        }
+
+        // 2. 电脑寻找获胜机会
+        moved = checkAndPlay(cells, 'O');
+        if (moved) {
+            checkGameStatus();
+            return;
+        }
+
+        // 3. 随机下棋
+        const availableCells = cells.filter(c => c.textContent === '');
+        if (availableCells.length > 0) {
+            const randomCell = availableCells[Math.floor(Math.random() * availableCells.length)];
+            makeMove(randomCell, 'O');
+            checkGameStatus();
+        }
+    }
+    function checkGameStatus() {
+        // 检查游戏状态
+        if (checkForWin()) {
+            updateGameStatus('你輸了，再来一局?');
+            gameActive = false;
+        } else if (isDraw()) {
+            updateGameStatus('平手! 再来一局?');
+            gameActive = false;
+        }
+    }
+
+    function isDraw() {
+        return Array.from(document.querySelectorAll('.cell')).every(cell => cell.textContent !== '');
+    }
+    function checkAndPlay(cells, player) {
+        const winningCombinations = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ];
+        for (const combination of winningCombinations) {
+            const [a, b, c] = combination;
+            if (cells[a].textContent === player && cells[b].textContent === player && cells[c].textContent === '') {
+                makeMove(cells[c], 'O');
+                return true;
+            }
+            if (cells[a].textContent === player && cells[c].textContent === player && cells[b].textContent === '') {
+                makeMove(cells[b], 'O');
+                return true;
+            }
+            if (cells[b].textContent === player && cells[c].textContent === player && cells[a].textContent === '') {
+                makeMove(cells[a], 'O');
+                return true;
+            }
+        }
+        return false;
+    }
+    const gameStatus = document.getElementById('game-status');
+    function checkForWin() {
+        const cells = document.querySelectorAll('.cell');
+        const winningCombinations = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ];
+
+        for (const combination of winningCombinations) {
+            const [a, b, c] = combination;
+            if (cells[a].textContent && cells[a].textContent === cells[b].textContent && cells[a].textContent === cells[c].textContent) {
+                if (cells[a].textContent === 'X') {
+                    updateGameStatus('恭喜你贏了！');
+                } else {
+                    updateGameStatus('你輸了，再来一局?');
+                }
+                gameActive = false;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function updateGameStatus(message) {
+        gameStatus.textContent = message;
+    }
+    function checkForEndOfGame() {
+        if (checkForWin()) {
+            gameActive = false;
+            return true;
+        }
+        // Check for draw
+        if (Array.from(document.querySelectorAll('.cell')).every(cell => cell.textContent !== '')) {
+            updateGameStatus('平手! 再來一局?');
+            gameActive = false;
+            return true;
+        }
+        return false;
+    }
+
+    function restartGame() {
+        document.querySelectorAll('.cell').forEach(cell => {
+            cell.textContent = '';
+            cell.classList.remove('x', 'o');
+        });
+        updateGameStatus('');
+        gameActive = true;
+        currentPlayer = 'X'; // Player starts
+    }
+});
+
+
+</script>
+</body>
+</html>
