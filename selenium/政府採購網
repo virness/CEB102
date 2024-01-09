@@ -1,0 +1,57 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
+import time
+import csv
+
+driver = webdriver.Edge()
+driver.get("https://web.pcc.gov.tw/pis/")
+
+# 等待页面加载
+time.sleep(2)
+
+# 选择招標方式为“公开招标”
+tender_way_select = Select(driver.find_element(By.ID, "declarationSelect"))
+tender_way_select.select_by_value('TENDER_WAY_1')
+
+# 输入日期 113/1/5
+date_input = driver.find_element(By.CLASS_NAME, "form-date")
+date_input.clear()
+date_input.send_keys("113/1/5")
+
+# 选择工程
+driver.find_element(By.ID, "basicRadProctrgCate1").click()
+
+# 点击搜索按钮
+search_button = driver.find_element(By.ID, "basicTenderSearchId")
+search_button.click()
+
+# 等待搜索结果加载
+time.sleep(5)
+
+# 使用提供的XPath定位表格
+table = driver.find_element(By.XPATH, "//*[@id='tpam']")
+
+# 捕獲所有行
+rows = table.find_elements(By.TAG_NAME, "tr")
+
+# 打開CSV文件準備寫入，使用utf-8-sig編碼
+with open('bid.csv', 'w', newline='', encoding='utf-8-sig') as file:
+    writer = csv.writer(file)
+    
+    # 迭代每一行，但跳過第一行（表頭）
+    for index, row in enumerate(rows):
+        # 獲取該行所有單元格
+        cells = row.find_elements(By.TAG_NAME, "td")
+        row_data = [cell.text for cell in cells]
+        
+        # 如果不是第一行，則尋找網址
+        if index > 0:
+            link = row.find_element(By.TAG_NAME, 'a').get_attribute('href') if row.find_elements(By.TAG_NAME, 'a') else '無網址'
+            row_data.append(link)
+        
+        # 將數據寫入CSV文件
+        writer.writerow(row_data)
+
+# 關閉瀏覽器
+driver.quit()
